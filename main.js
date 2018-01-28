@@ -32,10 +32,9 @@ const setToday = () => {
 const addInterceptLink = () => {
   var targets = document.getElementsByTagName('a');
   for (var i = 0; i < targets.length; i++) {
-    var a = targets[i];
-    if (/abema.tv/gi.test(a.href)) {
-      a.addEventListener('click', (event) => {
-        window.open(a.href,"","width=1568,height=882");
+    if (/abema.tv/gi.test(targets[i].href)) {
+      targets[i].addEventListener('click', (event) => {
+        window.open(targets[i].href,"","width=1568,height=882");
         event.preventDefault();
       }, false);      
     }
