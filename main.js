@@ -9,8 +9,7 @@ const DayGrids = [
   "grid-wed",
   "grid-thu",
   "grid-fri",
-  "grid-sat",
-  "grid-sun"
+  "grid-sat"
 ];
 
 const main = () => {
