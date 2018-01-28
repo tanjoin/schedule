@@ -33,7 +33,10 @@ const addInterceptLink = () => {
   var targets = document.getElementsByTagName('a');
   for (var i = 0; i < targets.length; i++) {
     if (/abema.tv/gi.test(targets[i].href)) {
+      console.log(targets[i]);
       targets[i].addEventListener('click', (event) => {
+        console.log(targets[i]);
+        console.log(event.target);
         window.open(event.target.href,"","width=1568,height=882");
         event.preventDefault();
       }, false);      
