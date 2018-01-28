@@ -1,0 +1,17 @@
+@media screen and (max-width: 900px) {
+  .today { 
+    display: block; 
+  }
+  .other { 
+    display: block; 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .today { 
+    display: block; 
+  }
+  .other { 
+    display: none; 
+  }
+}
