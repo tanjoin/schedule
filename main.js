@@ -15,6 +15,7 @@ const DayGrids = [
 
 const main = () => {
   setToday();
+  addInterceptLink();
 };
 
 const setToday = () => {
@@ -28,3 +29,16 @@ const setToday = () => {
     }
   }
 };
+
+const addInterceptLink = () => {
+  var targets = document.getElementsByTagName('a');
+  for (var i = 0; i < targets.length; i++) {
+    var a = targets[i];
+    if (a.href.test(//gi)) {
+      a.addEventListener('click', (event) => {
+        window.open(a.href,"","width=1568,height=882");
+        event.preventDefault();
+      }, false);      
+    }
+  }
+}
