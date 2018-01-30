@@ -24,7 +24,7 @@ const setToday = () => {
     const tab = tabs[i];
     tab.className = "mdl-tabs__tab";
     if (tab.href === "#" + day) {
-      tab.className += "is-active";
+      tab.className += " is-active";
     }
   }
   const panels = document.getElementsByClassName("mdl-tabs__panel");
@@ -32,7 +32,7 @@ const setToday = () => {
     const panel = panels[i];
     panel.className = "mdl-tabs__panel";
     if (panel.id === day) {
-      panel.className += "is-active";
+      panel.className += " is-active";
     }
   }
 };
