@@ -23,7 +23,8 @@ const setToday = () => {
   for (var i = 0; i < tabs.length; i++) {
     const tab = tabs[i];
     tab.className = "mdl-tabs__tab";
-    if (tab.href === "#" + day) {
+    if (tab.href.endsWith("#" + day)) {
+      console.log(tab.href);
       tab.className += " is-active";
     }
   }
