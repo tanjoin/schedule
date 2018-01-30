@@ -19,7 +19,7 @@ const main = () => {
 
 const setToday = () => {
   var day = DayGrids[new Date().getDay()];
-  window.location.hash = day;
+  document.getElementById("#" + day).click()
 };
 
 const addInterceptLink = () => {
