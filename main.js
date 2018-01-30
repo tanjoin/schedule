@@ -18,8 +18,23 @@ const main = () => {
 };
 
 const setToday = () => {
-  var day = DayGrids[new Date().getDay()];
-  document.getElementById(day).click()
+  const day = DayGrids[new Date().getDay()];
+  const tabs = document.getElementsByClassName("mdl-tabs__tab");
+  for (var i = 0; i < tabs.length; i++) {
+    const tab = tabs[i];
+    tab.className = "mdl-tabs__tab";
+    if (tab.href === "#" + day) {
+      tab.className += "is-active";
+    }
+  }
+  const panels = document.getElementsByClassName("mdl-tabs__panel");
+  for (var i = 0; i < panels.length; i++) {
+    const panel = panels[i];
+    panel.className = "mdl-tabs__panel";
+    if (panel.id === day) {
+      panel.className += "is-active";
+    }
+  }
 };
 
 const addInterceptLink = () => {
