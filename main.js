@@ -1,4 +1,12 @@
 var element = null;
+var nowCell = null;
+
+const SECOND_MILLISECOND = 1000;
+const MINUTE_MILLISECOND = 60 * SECOND_MILLISECOND;
+const HOUR_MILLISECOND = 60 * MINUTE_MILLISECOND;
+const DAY_MILLISECOND = 24 * HOUR_MILLISECOND;
+const WEEK_MILLISECOND = 7 * DAY_MILLISECOND;
+const YEAR_MILLISECOND = 365 * DAY_MILLISECOND;
 
 window.onload = () => {
   main();
@@ -6,6 +14,17 @@ window.onload = () => {
 
 window.onscroll = () => {
   showScrollButton();
+}
+
+const check = () => {
+  var target = new Date();
+  target.setHours(target.getHours() + 1);
+  target.setMinutes(0);
+  target.setSeconds(0);
+
+  setTimeout(target.getTime() - new Date().getTime(), () => {
+    main();
+  });
 }
 
 const DayGrids = [
@@ -28,15 +47,22 @@ const main = () => {
   document.getElementById('scroll-to-top').onclick = () => {
     scrollTop();
   };
+  check();
 };
 
 const scrollNow = () => {
   const day = DayGrids[new Date().getDay()];
   const selector = "#" + day +" > div.mdl-grid.cal-cell.hour-cell.hour-cell_" + new Date().getHours();
-  document.querySelector(selector).scrollIntoView({
+  const cell = document.querySelector(selector);
+  cell.scrollIntoView({
     behavior: "smooth"
   });
   isFirstScroll = false;
+  if (nowCell) {
+    nowCell.classList.remove('today');
+  }
+  nowCell = cell;
+  nowCell.classList.add('today');
 }
 
 const scrollTop = () => {
