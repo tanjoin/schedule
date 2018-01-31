@@ -1,6 +1,12 @@
+var element = null;
+
 window.onload = () => {
   main();
 };
+
+window.onscroll = () => {
+  showScrollButton();
+}
 
 const DayGrids = [
   "sunday",
@@ -13,11 +19,49 @@ const DayGrids = [
 ];
 
 const main = () => {
-  setToday();
+  selectToday();
   addInterceptLink();
+  setTimeout(() => {
+    scrollNow();
+    return false;
+  }, 300);
+  document.getElementById('scroll-to-top').onclick = () => {
+    scrollTop();
+  };
 };
 
-const setToday = () => {
+const scrollNow = () => {
+  const day = DayGrids[new Date().getDay()];
+  const selector = "#" + day +" > div.mdl-grid.cal-cell.hour-cell.hour-cell_" + new Date().getHours();
+  document.querySelector(selector).scrollIntoView({
+    behavior: "smooth"
+  });
+  isFirstScroll = false;
+}
+
+const scrollTop = () => {
+  document.getElementById("container").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+const showScrollButton = () => {
+  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+  if (element == null) {
+    element = document.getElementById('scroll-to-top');
+  }
+  if (scrollTop / scrollHeight > 0.1) {
+    element.classList.remove('hidden');
+    element.classList.add('show');
+  } else {
+    element.classList.add('hidden');
+    element.classList.remove('show');
+  }
+}
+
+const selectToday = () => {
   const day = DayGrids[new Date().getDay()];
   const tabs = document.getElementsByClassName("mdl-tabs__tab");
   for (var i = 0; i < tabs.length; i++) {
@@ -45,7 +89,7 @@ const addInterceptLink = () => {
       targets[i].addEventListener('click', (event) => {
         window.open(event.target.href,"","width=1568,height=882");
         event.preventDefault();
-      }, false);      
+      }, false);
     }
   }
 }
