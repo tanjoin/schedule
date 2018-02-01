@@ -4,9 +4,9 @@
 
 .cal-cell {
   height: 240px;
-  border-top: 1px solid #EEEEEE;
+  border-top: 1px solid #AAAAAA;
   padding: 0px;
-  margin-left: 24px;
+  margin-left: 36px;
 }
 
 .cal-cell-content {
@@ -18,7 +18,7 @@
 }
 
 .hour-cell:before {
-  color: #CCCCCC;
+  color: #AAAAAA;
   margin-top: -18px;
   margin-left: -24px;
   padding: 8px;
